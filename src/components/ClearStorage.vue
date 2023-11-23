@@ -21,6 +21,9 @@
 <script lang="ts" setup>
 // @ts-nocheck
 import router from "@/router"
+import VConsole from "vconsole"
+
+let vConsole = null
 
 let clearLeft = false
 let clearRight = false
@@ -43,8 +46,7 @@ const clearStorageLeft = () => {
 		router.replace("/")
 	}
 }
-import.meta.env.MODE == "beta" &&
-	(document.getElementById("__vconsole").style.display = "block")
+import.meta.env.MODE == "beta" && (vConsole = new VConsole())
 
 const clearStorageRight = () => {
 	clearRight = true
@@ -52,15 +54,12 @@ const clearStorageRight = () => {
 		clearRight = false
 	}, 1000)
 	if (clearLeft) {
-		let vconsoleDisplay = document.getElementById("__vconsole")?.style.display
-		let inputDisplay = document.getElementById("vconsole-input-field")?.style
-			.display
-		if (vconsoleDisplay !== "none") {
-			document.getElementById("__vconsole").style.display = "none"
+		if (vConsole) {
+			vConsole.destroy()
+			vConsole = null
 			document.getElementById("vconsole-input-field").style.display = "none"
 		} else {
-			document.getElementById("vconsole-input-field").style.display =
-				inputDisplay === "block" ? "none" : "block"
+			document.getElementById("vconsole-input-field").style.display = "block"
 			if (
 				document.getElementById("vconsole-input-field").style.display !== "none"
 			) {
@@ -78,7 +77,7 @@ const vconsolePass = ref("")
 const password = "kykjhz369clg."
 const showVConsole = () => {
 	if (vconsolePass.value === password) {
-		document.getElementById("__vconsole").style.display = "block"
+		vConsole = new VConsole()
 		document.getElementById("vconsole-input-field").style.display = "none"
 	}
 }
