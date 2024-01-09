@@ -21,7 +21,9 @@
 			@touchend="touchend"
 		>
 			<div class="arrow" v-if="!isSuccess">>></div>
-			<div class="count_hook" v-else>√</div>
+			<div class="count_hook" v-else>
+				<van-icon name="success" />
+			</div>
 		</div>
 		<div class="text">滑动滑块验证</div>
 		<div
