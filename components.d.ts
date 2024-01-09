@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ClearStorage: typeof import('./src/components/ClearStorage.vue')['default']
+    DragVerify: typeof import('./src/components/DragVerify.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     Popup: typeof import('./src/components/Popup.vue')['default']

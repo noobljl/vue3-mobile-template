@@ -68,7 +68,7 @@ service.interceptors.response.use(
 			"fail"
 		)
 		setTimeout(async () => {
-			await router.replace("/error")
+			// await router.replace("/error")
 		}, 1500)
 	}
 )

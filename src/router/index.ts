@@ -37,10 +37,10 @@ router.afterEach((to, from) => {
 })
 router.beforeEach((to, form, next) => {
 	const token = localStorage.getItem(itemCode + "token")
-	if (to.path === "/error") {
-		next()
-		return
-	}
+	// if (to.path === "/error") {
+	// 	next()
+	// 	return
+	// }
 	if (token !== null) {
 		if (to.path === "/login") {
 			next("/home")
